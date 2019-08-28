@@ -1,0 +1,21 @@
+{
+   "items":{
+        "Rice" :{
+             "name" : "HTM",
+             "weight" : 26,
+             "price_per_kg" : 59
+        },
+        "Pulses" :{
+            "name" : "Ruchi",
+            "weight" : 1,
+            "price_per_kg" : 46
+        },
+        "Wheats" :{
+            "name" : "Haldiram",
+            "weight" : 5,
+            "price_per_kg" : 28
+        }
+
+    }
+
+}

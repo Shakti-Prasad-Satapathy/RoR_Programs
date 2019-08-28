@@ -1,0 +1,42 @@
+class Deck
+  def deck_of_card
+    ranks = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+    suits = ["♣", "♥", "♠", "♦"]
+    cards = []
+
+    ranks.each do |rank|
+      suits.each do |suit|
+        cards.unshift(rank + suit)
+      end
+    end
+    cards.shuffle!
+    distribute(cards)
+  end
+
+  def distribute(cards)
+    first_dimention = []
+    second_dimention = []
+    temparr = []
+    count = 1
+    for i in 0..51
+      temparr.unshift(cards[i])
+      count = count + 1
+      if count % 9 == 0
+        first_dimention.unshift("player no")
+        second_dimention.unshift("  #{temparr}")    # adding the prime numbers belongs to that range
+        temparr.clear
+      end
+    end
+    array = Array.new(2)
+    array[0] = Array.new(first_dimention)   # adding in 1st demention
+    array[1] = Array.new(second_dimention)    # ading in 2nd dimention
+    for i in 0..(array[0].size) - 1
+      print array[0][i]
+      print array[1][i]
+      puts
+    end
+  end
+end
+
+deck = Deck.new()
+deck.deck_of_card()

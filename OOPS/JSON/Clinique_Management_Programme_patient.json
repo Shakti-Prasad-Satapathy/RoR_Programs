@@ -1,0 +1,34 @@
+{
+  "doctors": [
+    {
+      "name": "Harilal",
+      "id": "xxx1",
+      "specialization": "Ortho",
+      "availability": 2
+    },
+    {
+      "name": "Ramlal",
+      "id": "xxx2",
+      "specialization": "Medicin",
+      "availability": 3
+    },
+    {
+      "name": "Pannalal",
+      "id": "xxx3",
+      "specialization": "Gino",
+      "availability": 0
+    },
+    {
+      "name": "Hiraralal",
+      "id": "xxx4",
+      "specialization": "phio",
+      "availability": 2
+    },
+    {
+      "name": "Shyamlal",
+      "id": "xxx5",
+      "specialization": "Child",
+      "availability": 2
+    }
+  ]
+}
