@@ -11,6 +11,7 @@ def stock_Report
   file = File.read("/home/admin1/ROR workspace/OOPS/JSON/Stock_Report.json")
   data_hash = JSON.parse(file)
   # appending more data to the data_hash
+
   data_hash["items"] << { "name": "Johnsons", "Number_of_Share": 120, "unit_Share_Price": 450 }
 
   File.open("/home/admin1/ROR workspace/OOPS/JSON/Stock_Report.json", "w") do |f|

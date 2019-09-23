@@ -42,17 +42,19 @@ class Business_logic
     second_dimention = []
     temparr = []
     count = 1
-    for i in 0..51
+    count2 = 1
+    for i in 0..36
       temparr.unshift(cards[i])
       count = count + 1
       if count % 9 == 0
+        count2 = count2 + 1
         first_dimention.unshift("player no  #{count / 9}")
         second_dimention.unshift("  #{temparr}")    # adding the prime numbers belongs to that range
         temparr.clear
       end
     end
     array = Array.new(2)  # Creating a 2d array
-    array[0] = Array.new(first_dimention)   # adding in 1st demention
+    array[0] = Array.new(first_dimention.reverse)   # adding in 1st demention
     array[1] = Array.new(second_dimention)    # ading in 2nd dimention
     for i in 0..(array[0].size) - 1
       print array[0][i]

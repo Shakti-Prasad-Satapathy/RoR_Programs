@@ -24,6 +24,11 @@
       "name": "Johnsons",
       "Number_of_Share": 120,
       "unit_Share_Price": 450
+    },
+    {
+      "name": "Johnsons",
+      "Number_of_Share": 120,
+      "unit_Share_Price": 450
     }
   ]
 }
