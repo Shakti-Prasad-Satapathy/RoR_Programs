@@ -5,8 +5,8 @@ class NotesController < ApplicationController
     @notes = Note.where(user_id: current_user)
   end
 
-  #def show
-  #end
+  def show
+  end
 
   def new
     @note = current_user.notes.build

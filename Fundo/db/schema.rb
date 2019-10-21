@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_043733) do
+ActiveRecord::Schema.define(version: 2019_10_16_050303) do
 
   create_table "notes", force: :cascade do |t|
     t.string "title"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 2019_09_21_043733) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "city"
+    t.string "first_nsme"
+    t.string "last_name"
+    t.string "provider"
+    t.string "uid"
+    t.string "name"
+    t.text "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
