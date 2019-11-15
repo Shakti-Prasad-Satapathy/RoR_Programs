@@ -1,4 +1,6 @@
-= simple_form_for @note do |f|
-    =f.input :title
-    =f.input :content
-    =f.button :submit, class: "button"
+.wrapper_with_paddin
+    = simple_form_for @note do |f|
+        =f.input :title, label: false, input_html: { style: "border: none; background-color: #108056;"}
+        =f.input :content, label: false, input_html: { style: "border: none; background-color: #108056;"}
+        =f.button :submit, class: "button" 
+

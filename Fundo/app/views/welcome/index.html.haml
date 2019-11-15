@@ -1,13 +1,14 @@
+
 #banner
     .banner_content 
-        %h1 Fundo notes
-        %p Simple note keeping app using RoR
+        %h1{:style => "text-shadow: 3px 3px #669999; color:red;"} Fundo notes
+        %h3 Simple note keeping app using RoR
         %button= link_to "Sigup", new_user_registration_path
-        %button= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
+        
 #testimonial
     .wrapper    
-        %p.quote "Never forget any thing what you know, Store and use any time
-        %p.name - Shakti Prasad Satapathy
+        %h3.quote.strong Never Let You Forget Any Thing...
+        %h3.name Shakti Prasad Satapathy
 
 #callouts
     .callout_inner
@@ -21,11 +22,6 @@
             %h2 Ambition
             %p to  make world paper less and degitalized
 
-#botton_cta 
-    .wrapper
-        %h2 for realz
-        %p I want you to signup
-        %button= link_to "Click Me", new_user_registration_path
 
-%footer
+.footer
     %p &copy; Shakti Corp
