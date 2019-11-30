@@ -3,6 +3,7 @@ class NotesController < ApplicationController
 
 
   def index
+    @note = current_user.notes.build
     @notes = Note.where(user_id: current_user)
     @search = params["search"]
     if @search.present?

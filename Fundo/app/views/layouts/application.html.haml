@@ -2,6 +2,7 @@
 %html
 %head
   %title FundoNoteApp
+  
   :javascript
     function openNav() {
       document.getElementById("mySidenav").style.width = "250px";
@@ -14,6 +15,16 @@
     }
 
 
+    function openUserForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+    
+    
+    function closeUserForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
+
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css")/
@@ -21,72 +32,110 @@
 
   %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
   %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
+  %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"}
+  %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"}
+  %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.7/js/tether.min.js"}
+
+
+  
   
   %body{:style => "background-color:#232020;"}
     .bg_color 
-      %nav.navbar.navbar-inverse
+      %nav.navbar.navbar-inverse{:style => "border:none;"}
         .container-fluid
           #mySidenav.sidenav
             %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"} ×
-            = link_to notes_path do
-              %i.glyphicon.glyphicon-file
-              Notes
-            = link_to notes_path do
-              %i.material-icons add_alert
-              Remender
+            
             %hr
             = link_to notes_path do
-              %i.material-icons archive
+              %i.glyphicon.glyphicon-file{:style => "margin-right: 26px;"}
+              Notes 
+            = link_to notes_path do
+              %i.glyphicon.glyphicon-bell{:style => "margin-right: 26px;"}
+              Remender
+            %hr
+            %p{:style => "margin-left: 30px;color:white;"}LABELS
+            %hr
+            = link_to notes_path do
+              %i.glyphicon.glyphicon-eye-close{:style => "margin-right: 26px;"}
               Archive
             = link_to notes_path do
-              %i.material-icons delete_sweep
+              %i.glyphicon.glyphicon-trash{:style => "margin-right: 26px;"}
               Trash
-        #main
-          
-          
-          %span{:onclick => "openNav()", :style => "font-size:25px;cursor:pointer;color:white;margin-top: 8px;margin-right: 10px;"} ☰
-          %a.navbar-brand{:href => "#"} FUNDO NOTES APP
+        #main{:style => "background-color: snow;"}
 
           - if user_signed_in?           
-            %ul.nav.navbar-nav
-              %li
-                = link_to root_path do
-                  %i.glyphicon.glyphicon-home
-                  Home
-              %li
-                .form-group.has-search
-                  %span.fa.fa-search.form-control-feedback
-                  %input.form-control{:placeholder => "Search", :type => "text"}/
+            %ul.nav.navbar-nav{:style => "width:100%;display: flex;justify-content: space-between;"}
+              %li{:style => "margin-top: 8px;"}  
+                %span{:onclick => "openNav()", :style => "font-size:25px;cursor:pointer;color:black;margin-top: 8px;margin-right: 10px;margin-top:5px;"} ☰
+              %li{:style => "margin-top: -15px;"}
+                //%a.navbar-brand{:href => "#"} FUNDO NOTES APP
+                = link_to image_tag('fundologo.jpeg'), root_path, id: "logo"
+              %li{:style => "width: 50%;"}
+                .searchContainer
+                  %i.fa.fa-search.searchIcon
+                  /%input.form-control{:placeholder => "Search", :type => "text"}/
+                  %input.searchBox{:name => "search", :placeholder => "Search...", :type => "search", :style => "color:white"}/
+                  /%input.searchButton{:type => "submit", :value => "Search"}/
 
             
+              /%li
+              /  = link_to new_note_path do
+              /    %i.glyphicon.glyphicon-file
+              /    New Note
+
+              
               %li
-                = link_to new_note_path do
-                  %i.glyphicon.glyphicon-file
-                  New Note
+                %i.glyphicon.glyphicon-refresh{:style => "font-size: 20px;margin-top: 15px;"}
               %li
-                = link_to destroy_user_session_path, method: :delete do
-                  %i.glyphicon.glyphicon-log-out
-                  Sign -out   
+                %i.glyphicon.glyphicon-cog{:style => "font-size: 20px;margin-top: 15px;"}
+              %li
+                %i.glyphicon.glyphicon-list{:style => "font-size: 20px;margin-top: 15px;"}
+
+              %li
+                //%button#btnPopover.btn.btn-primary{"data-toggle" => "popover", "data-trigger" => "hover","data-content" => "here it is popover content", :title => "here it is Popover Title"}Popover Example
+                //.newNote
+                %button.open-button{:onclick => "openUserForm()", :style => "border-radius: 50%;"} ☰
+                #myForm.form-popup{:style => "height: 30%;right: 10px;width: 20%;"}
+                  .profilepic
+                  %img{:alt => "Smiley face", :src => "data:image/png;base64,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", :style => "    border-radius: 50%;width: 40%;  height: 40%;margin-left: 30%;margin-top: 10%"}/
+                  %div{:stye => "width:60px; height:60px"}
+                    //= image_tag(@user.image.where(user_id: current_user))
+                    //- @user.each do |task|
+                    //= User.image.where(user_id: current_user)
+
+                  #logindiv
+                    .button
+                      = link_to destroy_user_session_path, method: :delete do
+                        
+                        SignOut
+                    %button.button{:onclick => "closeUserForm()", :type => "button"} Close
+
+
+
           - else
-            %ul.nav.navbar-nav
-              %li.active
-                = link_to root_path do
-                  %i.glyphicon.glyphicon-home
-                  Home
-            %ul.nav.navbar-nav.navbar-right
+            %ul.nav.navbar-nav{:style => "width:100%;"}
               %li
-                = link_to new_user_session_path do
-                  %i.glyphicon.glyphicon-log-in  
-                  Sign in
+                %a.navbar-brand{:href => "#"} FUNDO NOTES APP
+              
+            
+              %li{:style => "margin-left: 77%;"}
+                %button.open-button{:onclick => "openUserForm()", :style => "border-radius: 50%;"} ☰
+                #myForm.form-popup{:style => "height: 40%;right: 10px;width: 20%;"}
+                  #logindiv
+                    .button
+                      = link_to new_user_session_path do
+                        %i.glyphicon.glyphicon-log-in  
+                        Sign in
+                    %button.button{:onclick => "closeUserForm()", :type => "button"} Close
+    
                   
-
-    %p.notice= notice
-    %p.alert= alert
-
-
-    =yield 
+              
+          %hr{:style => "background-color:white;margin-top: 60px;"}
+          %p.notice= notice
+          %p.alert= alert
 
 
-
+          =yield 
 
 

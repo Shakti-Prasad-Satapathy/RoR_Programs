@@ -1,6 +1,6 @@
 .wrapper_with_paddin
     = simple_form_for @note do |f|
-        =f.input :title, label: false, input_html: { style: "border: none; background-color: #108056;"}
-        =f.input :content, label: false, input_html: { style: "border: none; background-color: #108056;"}
+        =f.input :title, placeholder: "Write Your Note Title Here...", label: false, input_html: { style: "border: none;"}
+        =f.input :content, placeholder: "Write Your Note Content Here...", label: false, input_html: { style: "border: none; "}
         =f.button :submit, class: "button" 
 

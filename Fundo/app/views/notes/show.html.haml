@@ -6,27 +6,6 @@
 
         .buttons
             = link_to "All Notes", notes_path, class: "button"
-            = link_to "Edit Note", edit_note_path(@note), class: "button"
+            = link_to "", edit_note_path(@note), class: "button"
             = link_to "Delete Note", note_path(@note), method: :delete, data: {confirm: "Are You Sure???" }, class: "button"
-    .col-xs-8
-        .panel.panel-primary
-            .panel-heading
-            %h3.panel-title Comments
-            %ul.list-group
-            - @notes.each do |comment|
-                %li.list-group-item
-                = comment.content
-                %span.pull-right
-                    = link_to 'delete', note_path(@note, comment, type: :normal), method: :delete, class: 'badge'
-                    %em= time_ago_in_words comment.created_at
-        .panel.panel-primary
-            .panel-heading
-            %h3.panel-title Deleted Comments
-            %ul.list-group
-            - @user.comments.only_deleted.each do |comment|
-                %li.list-group-item
-                = comment.content
-                %span.pull-right
-                    = link_to 'undelete', note_path(@note, comment, type: :undelete), method: :delete, class: 'badge'
-                    = link_to 'really delete', note_path(@note, comment, type: :forever), method: :delete, class: 'badge'
-                    %em= time_ago_in_words comment.created_at
+    

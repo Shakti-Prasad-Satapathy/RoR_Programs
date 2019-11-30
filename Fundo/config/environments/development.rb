@@ -1,4 +1,6 @@
 Rails.application.configure do
+  config.active_record.cache_versioning = false
+  config.session_store :cache_store, key: ENV['_my_app_session']
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -14,20 +16,21 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join("tmp", "caching-dev.txt").exist?
-    config.action_controller.perform_caching = true
-    config.action_controller.enable_fragment_cache_logging = true
+  #if Rails.root.join("tmp", "caching-dev.txt").exist?
+  config.action_controller.perform_caching = true
+  config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :memory_store
-    config.public_file_server.headers = {
-      "Cache-Control" => "public, max-age=#{2.days.to_i}",
-    }
-  else
-    config.action_controller.perform_caching = false
-
-    config.cache_store = :null_store
-  end
-
+  config.cache_store = :redis_store, {
+    host: 'localhost',
+    post: 6379,
+    db: 0,
+  }, {
+    expires_in: 90.minutes
+  }
+  config.public_file_server.headers = {
+    "Cache-Control" => "public, max-age=#{2.days.to_i}",
+  }
+ 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 

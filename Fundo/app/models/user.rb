@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
+  #mount_uploader :image, ImageUploader
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
@@ -22,4 +23,9 @@ class User < ApplicationRecord
   end
   
   has_many :notes
+  has_one_attached :image
+  
+  #has_attached_file :image, :styles => { :small => "150x150"}
+  #validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
 end
