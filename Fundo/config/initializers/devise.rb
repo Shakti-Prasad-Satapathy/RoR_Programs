@@ -114,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'a5d62d46763f84f65d312135c9a27ffe8e28ef5553e5df74c91bbd5724d8bfd93129e2c1831d9c41c2c587c7cb481b857953107eb9d0658a9f8819f129016165'
+  # config.pepper = '***********************************************************************************'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -296,5 +296,5 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-  config.omniauth :facebook, "583808935697267", "ebb50287dc55a7e888046dd3baf3fb41", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  config.omniauth :facebook, "***************", "**********************", callback_url: "http://localhost:3000/users/auth/facebook/callback"
 end
